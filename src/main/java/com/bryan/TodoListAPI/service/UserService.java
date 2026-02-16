@@ -6,15 +6,17 @@ import com.bryan.TodoListAPI.model.dto.RegisterRequestDto;
 import com.bryan.TodoListAPI.repository.UserRepo;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
     private final UserRepo userRepo;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepo userRepo) {
+    public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User createFromRequest(RegisterRequestDto requestDto){
@@ -23,7 +25,7 @@ public class UserService {
             throw new EmailAlreadyExistsException("Email already registered");
         }
 
-        User newUser = new User(requestDto.name(), requestDto.email(),  bCryptPasswordEncoder.encode(requestDto.password()));
+        User newUser = new User(requestDto.name(), requestDto.email(),  passwordEncoder.encode(requestDto.password()));
 
         Long id = userRepo.add(newUser);
         return userRepo.findById(id).orElseThrow(() -> new UsernameNotFoundException(
