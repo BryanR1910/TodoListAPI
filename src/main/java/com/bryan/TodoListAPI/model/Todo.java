@@ -9,16 +9,19 @@ public class Todo {
     public Todo() {
     }
 
+
+
     public Todo(String title, String description, Long userId) {
         this.title = title;
         this.description = description;
         this.userId = userId;
     }
 
-    public Todo(Long id, String title, String description) {
+    public Todo(Long id, String title, String description, Long userId) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.userId = userId;
     }
 
     public Long getUserId() {
