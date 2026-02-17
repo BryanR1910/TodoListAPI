@@ -28,7 +28,7 @@ public class MyUserDetailsServiceTest {
     private MyUserDetailsService myUserDetailsService;
 
     @Test
-    void LoadUserByUsername(){
+    void testLoadUserByUsername(){
         String email = "bryan@gmail.com";
         User user = new User(1L, "bryan", "bryan@gmail.com", "encoded");
 
@@ -45,7 +45,7 @@ public class MyUserDetailsServiceTest {
     }
 
     @Test
-    void LoadUserByUsernameThrowExceptionWhenUserNotFound(){
+    void testLoadUserByUsernameThrowExceptionWhenUserNotFound(){
         String email = "bryan@gmail.com";
         User user = new User(1L, "bryan", "bryan@gmail.com", "encoded");
 
