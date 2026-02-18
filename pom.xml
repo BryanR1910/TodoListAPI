@@ -134,9 +134,10 @@
                                 <exclude>**/exception/**</exclude>
                                 <exclude>**/security/**</exclude>
                                 <exclude>**/mapper/**</exclude>
-                                <exclude>**/security/**</exclude>
                                 <exclude>**/repository/**</exclude>
                                 <exclude>**/controller/**</exclude>
+                                <exclude>**/filter/**</exclude>
+                                <exclude>**/jwt/**</exclude>
                             </excludes>
                         </configuration>
                     </execution>

@@ -74,7 +74,6 @@ public class AuthService {
         RefreshToken storedToken = refreshTokenRepo.findByToken(refreshTokenValue).orElseThrow(
                 () -> new AuthenticationException("Invalid refresh token")
         );
-        System.out.println(storedToken.getToken());
         if(storedToken.getRevoked()){
             throw new AuthenticationException("Refresh token revoked");
         }
